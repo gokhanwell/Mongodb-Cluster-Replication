@@ -38,9 +38,24 @@
       sudo systemctl restart mongod
 
 
+#define hostname each servers
+
+e.g.  hostnamectl set-hostname mongo-1   #first server
+      hostnamectl set-hostname mongo-2   #second server
+      hostnamectl set-hostname mongo-3   #third server
+
+#define mongo hostname all servers /etc/hosts
+
+      sudo vi /etc/hosts 
+-
+      "mongo-1-private-ip"  mongo-1
+      "mongo-2-private-ip"  mongo-2
+      "mongo-3-private-ip"  mongo-3
+
+
 #Connect to mongodb from any server
 
-      mongo --host "mongodb private ip"
+      mongo --host mongo-1
 
 -
       rs.initiate(
@@ -48,9 +63,9 @@
             _id: "replica-set-name",
             version: 1,
             members: [
-               { _id: 0, host : "mongodb-1-private-ip:27017" },
-               { _id: 1, host : "mongodb-2-private-ip:27017" },
-               { _id: 2, host : "mongodb-3-private-ip:27017" }
+               { _id: 0, host : "mongo-1:27017" },
+               { _id: 1, host : "mongo-2:27017" },
+               { _id: 2, host : "mongo-3:27017" }
             ]
          }
       )
