@@ -32,7 +32,7 @@
         bindIp:  "xx.xx.xx.xx" # This must be changed as per the private ip of the ec2
 
       replication:
-        replSetName: "replica-set-name" #This must be same in all mongod.conf file in replica mongo servers
+        replSetName: "mongo-replica" #This must be same in all mongod.conf file in replica mongo servers
 
 -
       sudo systemctl restart mongod
@@ -40,9 +40,9 @@
 
 #define hostname each servers
 
-e.g.  hostnamectl set-hostname mongo-1   #first server
-      hostnamectl set-hostname mongo-2   #second server
-      hostnamectl set-hostname mongo-3   #third server
+      hostnamectl set-hostname mongo-1   #first server  e.g.
+      hostnamectl set-hostname mongo-2   #second server  e.g.
+      hostnamectl set-hostname mongo-3   #third server  e.g.
 
 #define mongo hostname all servers /etc/hosts
 
@@ -60,7 +60,7 @@ e.g.  hostnamectl set-hostname mongo-1   #first server
 -
       rs.initiate(
          {
-            _id: "replica-set-name",
+            _id: "mongo-replica",
             version: 1,
             members: [
                { _id: 0, host : "mongo-1:27017" },
