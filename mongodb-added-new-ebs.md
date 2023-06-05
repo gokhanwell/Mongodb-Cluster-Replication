@@ -18,7 +18,7 @@
 
         sudo lsblk -f  #take the UUID 
         sudo vi /etc/fstab
-
-UUID=2e2f1f7e-7434-45bc-bf8c-bf9112fdd0a1     /data           xfs    defaults,noatime  1   1
-
+-
+        UUID=2e2f1f7e-7434-45bc-bf8c-bf9112fdd0a1     /data           xfs    defaults,noatime  1   1
+-
         sudo reboot now
